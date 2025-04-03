@@ -1,0 +1,28 @@
+[
+  {
+    "id": "email",
+    "fieldType": "input",
+    "placeholder": "Email Id",
+    "type": "email",
+    "label": "Email Id"
+  },
+  {
+    "id": "password",
+    "fieldType": "input",
+    "placeholder": "Password",
+    "type": "password",
+    "label": "Password"
+  },
+  {
+    "id": "mobile",
+    "fieldType": "input",
+    "placeholder": "Mobile Number",
+    "type": "tel",
+    "label": "Mobile Number"
+  },
+  {
+    "fieldType": "button",
+    "type": "submit",
+    "children": "Submit"
+  }
+]

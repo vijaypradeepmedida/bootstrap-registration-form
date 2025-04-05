@@ -20,41 +20,42 @@ function App() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setApiData([...apiData, formData]);
-    // try {
-    //   const response = await axios.post("YOUR_API_ENDPOINT", formData);
+    console.log("Form submitted:", formData); // Log form data
+    // setApiData([...apiData, formData]);
+    try {
+      const response = await axios.post("http://localhost:2000/api/games", formData);
 
-    //   console.log("Data submitted successfully:", response.data); // Log response data
+      console.log("Data submitted successfully:", response.data); // Log response data
 
-    //   setApiData(response.data);
-    //   setFormData({ email: "", password: "", mobile: "" }); //clear the form
-    // } catch (error) {
-    //   console.error("Error submitting data:", error); // Handle errors (e.g., display an error message)
-    // }
+      setApiData([...apiData, response.data]);
+      setFormData({  }); //clear the form
+    } catch (error) {
+      console.error("Error submitting data:", error); // Handle errors (e.g., display an error message)
+    }
   };
 
-  // useEffect(() => {
-  //   const fetchUsers = async () => {
-  //     try {
-  //       const response = await axios.get("YOUR_API_ENDPOINT");
-  //       setApiData(response.data);
-  //       setLoading(false);
-  //     } catch (err) {
-  //       setError(err);
-  //       setLoading(false);
-  //     }
-  //   };
+  useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        const response = await axios.get("http://localhost:2000/api/games");
+        setApiData(response.data);
+        setLoading(false);
+      } catch (err) {
+        setError(err);
+        setLoading(false);
+      }
+    };
 
-  //   fetchUsers();
-  // }, []);
+    fetchUsers();
+  }, []);
 
-  // if (loading) {
-  //   return <p>Loading users...</p>;
-  // }
+  if (loading) {
+    return <p>Loading items..</p>;
+  }
 
-  // if (error) {
-  //   return <p>Error fetching users: {error.message}</p>;
-  // }
+  if (error) {
+    return <p>Error fetching items: {error.message}</p>;
+  }
 
   return (
     <>

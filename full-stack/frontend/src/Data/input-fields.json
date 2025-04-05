@@ -1,0 +1,28 @@
+[
+  {
+    "id": "gamename",
+    "fieldType": "input",
+    "placeholder": "Game Name",
+    "type": "text",
+    "label": "Game Name"
+  },
+  {
+    "id": "type",
+    "fieldType": "type",
+    "placeholder": "Type",
+    "type": "text",
+    "label": "Type"
+  },
+  {
+    "id": "status",
+    "fieldType": "input",
+    "placeholder": "status",
+    "type": "text",
+    "label": "status"
+  },
+  {
+    "fieldType": "button",
+    "type": "submit",
+    "children": "Submit"
+  }
+]

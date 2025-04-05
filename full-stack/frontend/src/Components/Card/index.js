@@ -3,26 +3,26 @@ import axios from "axios";
 
 export default function Card(props) {
   const { apiData, setApiData } = props;
-  const handleDelete = async (email) => {
-    setApiData(apiData.filter((card) => card.email !== email));
+  const handleDelete = async (gamename) => {
+    // setApiData(apiData.filter((card) => card.email !== email));
 
-    // try {
-    //   await axios.delete(`YOUR_API_ENDPOINT/${email}`); // Replace with your API endpoint
-    //   // Update the cardData state to remove the deleted card
-    //   setApiData(apiData.filter((card) => card.email !== email));
-    // } catch (err) {
-    //   console.error("Error deleting card:", err);
-    //   // Handle the error (e.g., show an error message)
-    // }
+    try {
+      await axios.delete(`http://localhost:2000/api/games/${gamename}`); // Replace with your API endpoint
+      // Update the cardData state to remove the deleted card
+      setApiData(apiData.filter((card) => card.gamename !== gamename));
+    } catch (err) {
+      console.error("Error deleting card:", err);
+      // Handle the error (e.g., show an error message)
+    }
   };
   return (
     <>
       {apiData.length ? (
         <div className="container">
           <div className="d-flex justify-content-between">
-            <h2 className="mb-3">Registred Users</h2>
+            <h2 className="mb-3">Registred Games</h2>
             <p className="fs-3">
-              Number of users - <b>{apiData.length}</b>
+              Number of items - <b>{apiData.length}</b>
             </p>
           </div>
           <div className="row">
@@ -31,7 +31,7 @@ export default function Card(props) {
                 <div className="card shadow-sm position-relative">
                   <button
                     className="btn btn-danger position-absolute top-0 end-0 m-2"
-                    onClick={() => handleDelete(card.email)}
+                    onClick={() => handleDelete(card.gamename)}
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -46,8 +46,9 @@ export default function Card(props) {
                     </svg>
                   </button>
                   <div className="card-body pe-5">
-                    <h5 className="card-title">{card.email}</h5>
-                    <p className="card-text">{card.mobile}</p>
+                    <h5 className="card-title">{card.gamename}</h5>
+                    <p className="card-text">{card.status}</p>
+                    <p className="card-text">{card.type}</p>
                   </div>
                 </div>
               </div>
@@ -56,7 +57,7 @@ export default function Card(props) {
         </div>
       ) : (
         <div className="container text-center">
-          <h1>No Users were registerd...</h1>
+          <h1>No games were registerd yet!</h1>
         </div>
       )}
     </>

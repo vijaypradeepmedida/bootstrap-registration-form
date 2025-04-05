@@ -6,13 +6,7 @@
     "type": "email",
     "label": "Email Id"
   },
-  {
-    "id": "password",
-    "fieldType": "input",
-    "placeholder": "Password",
-    "type": "password",
-    "label": "Password"
-  },
+ 
   {
     "id": "mobile",
     "fieldType": "input",
